@@ -14,7 +14,7 @@ def getIPs():
     a = ""
     aaaa = ""
     try:
-        a = requests.get("https://dns.timknowsbest.com/api/ipv4").text
+        a = requests.get("https://api.ipify.org").text
     except Exception:
         print("Warning: IPv4 not detected.")
     try:
@@ -119,9 +119,9 @@ def updateIPs():
 
 if(len(sys.argv) > 1):
     if(sys.argv[1] == "--repeat"):
-        print("Updating A & AAAA records every 10 minutes")
+        print("Updating A & AAAA records every 5 minutes")
         updateIPs()
-        delay = 10*60 # 10 minutes
+        delay = 5*60 # 5 minutes
         next_time = time.time() + delay
         while True:
             time.sleep(max(0, next_time - time.time()))
